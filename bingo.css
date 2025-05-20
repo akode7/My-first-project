@@ -1,0 +1,80 @@
+body {
+  background: #1e1e2f;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 2rem;
+}
+
+h1 {
+  color: #00ffd5;
+  text-shadow: 0 0 10px #00ffd5;
+}
+
+.controls {
+  margin: 1rem 0;
+}
+
+button {
+  background-color: #00ffd5;
+  color: #000;
+  font-weight: bold;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  transition: background 0.3s;
+  box-shadow: 0 0 10px #00ffd5;
+}
+
+button:hover:not(:disabled) {
+  background-color: #00ccb2;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#bingo-board, #ai-board {
+  display: grid;
+  grid-template-columns: repeat(5, 80px);
+  grid-gap: 10px;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.cell {
+  background: #292b3a;
+  border: 2px solid #555;
+  color: #fff;
+  font-size: 1.5rem;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.cell.marked {
+  background: #00ffd5;
+  color: #000;
+  font-weight: bold;
+  box-shadow: 0 0 10px #00ffd5;
+}
+
+.cell.free {
+  background: #ff00ff;
+  color: #fff;
+  font-weight: bold;
+}
+
+#message, #number-draw {
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+  color: #00ff7f;
+}

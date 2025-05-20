@@ -1,0 +1,102 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
+    font-family: 'Orbitron', sans-serif;
+    color: #f0f0f0;
+    padding: 3rem 2rem;
+    text-align: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Import Retro Font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* Animated Title */
+.title {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    color: #00ffe5;
+    text-shadow: 0 0 10px #00ffe5, 0 0 20px #0ff, 0 0 40px #00f2ff;
+}
+
+/* Era Headings */
+.e-t, .m-t, .h-t {
+    font-size: 2rem;
+    margin: 2.5rem 0 1rem;
+    color: #ff00ff;
+    border-bottom: 2px dashed #ff00ff;
+    display: inline-block;
+    padding-bottom: 0.4rem;
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+}
+
+/* Link Section */
+.easy-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+}
+
+/* Glassy Neon Button Links */
+.easy-links a {
+    padding: 1rem 1.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 0 5px #fff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* Hover Effects */
+.easy-links a:hover {
+    background: rgba(0, 255, 255, 0.15);
+    transform: scale(1.08);
+    box-shadow: 0 0 15px #0ff, 0 0 25px #0ff;
+}
+
+/* Shine Effect on Hover */
+.easy-links a::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: rotate(25deg);
+    pointer-events: none;
+    transition: all 0.5s;
+}
+
+/* Responsive Layout */
+@media (max-width: 600px) {
+    .easy-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .easy-links a {
+        width: 90%;
+        text-align: center;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+}
