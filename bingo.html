@@ -2,23 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bingo Game</title>
   <link rel="stylesheet" href="bingo.css">
 </head>
 <body>
 
   <h1>Bingo Game</h1>
+  <div id="bingo-card"></div>
 
-  <div class="controls">
-    <button id="start-btn">Start Game</button>
-    <button id="restart-btn" disabled>Restart</button>
-  </div>
+  <button onclick="startGame()">Start</button>
+  <button onclick="restartGame()">Restart</button>
 
-  <div id="bingo-board"></div>
-  <div id="ai-board"></div>
-  <div id="message"></div>
-  <div id="number-draw"></div>
+  <div id="called-number">Called Number: -</div>
 
   <script src="bingo.js"></script>
 </body>
