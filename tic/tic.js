@@ -1,123 +1,67 @@
-const board = document.getElementById("game-board");
-const startBtn = document.getElementById("start-btn");
-const restartBtn = document.getElementById("restart-btn");
+const startBtn = document.getElementById('startBtn');
+const restartBtn = document.getElementById('restartBtn');
+const gameBoard = document.getElementById('gameBoard');
+const statusText = document.getElementById('status');
+const cells = document.querySelectorAll('.cell');
 
-// Restart game instantly
-restartBtn.addEventListener("click", () => {
-    createBoard();
-});
+let currentPlayer = 'X';
+let board = ['', '', '', '', '', '', '', '', ''];
+let gameActive = false;
 
-const statusText = document.getElementById("status");
-let cells = [];
-let currentPlayer = "X";
-
-// Winning combinations
-const winPatterns = [
-    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-    [0, 4, 8], [2, 4, 6]             // Diagonals
+const winConditions = [
+  [0,1,2],[3,4,5],[6,7,8],
+  [0,3,6],[1,4,7],[2,5,8],
+  [0,4,8],[2,4,6]
 ];
 
-// Initialize game board
-function createBoard() {
-    board.innerHTML = "";
-    cells = [];
-    for (let i = 0; i < 9; i++) {
-        let cell = document.createElement("div");
-        cell.classList.add("cell");
-        cell.addEventListener("click", () => makeMove(i));
-        board.appendChild(cell);
-        cells.push(cell);
+function checkWin() {
+  for (let condition of winConditions) {
+    const [a, b, c] = condition;
+    if (board[a] && board[a] === board[b] && board[b] === board[c]) {
+      statusText.textContent = `${board[a]} wins!`;
+      gameActive = false;
+      return true;
     }
-    statusText.textContent = "Your turn!";
-    currentPlayer = "X";
+  }
+
+  if (!board.includes('')) {
+    statusText.textContent = "It's a draw!";
+    gameActive = false;
+    return true;
+  }
+
+  return false;
 }
 
-// Make move
-function makeMove(index) {
-    if (cells[index].innerHTML === "") {
-        cells[index].innerHTML = currentPlayer;
-        if (checkWinner()) {
-            statusText.textContent = `${currentPlayer} Wins!`;
-            disableBoard();
-            return;
-        }
-        if (checkTie()) {
-            statusText.textContent = "It's a Tie!";
-            return;
-        }
-        currentPlayer = "O";
-        statusText.textContent = "AI's turn...";
-        setTimeout(aiMove, 500);
-    }
+function handleCellClick(e) {
+  const index = e.target.dataset.index;
+
+  if (board[index] !== '' || !gameActive) return;
+
+  board[index] = currentPlayer;
+  e.target.textContent = currentPlayer;
+
+  if (!checkWin()) {
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    statusText.textContent = `Player ${currentPlayer}'s turn`;
+  }
 }
 
-// AI move (Minimax)
-function aiMove() {
-    let emptyCells = cells.filter(cell => cell.innerHTML === "");
-    if (emptyCells.length > 0) {
-        let randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-        randomCell.innerHTML = "O";
-
-        if (checkWinner()) {
-            statusText.textContent = "AI Wins!";
-            disableBoard();
-            return;
-        }
-        if (checkTie()) {
-            statusText.textContent = "It's a Tie!";
-            return;
-        }
-        currentPlayer = "X";
-        statusText.textContent = "Your turn!";
-    }
+function startGame() {
+  board = ['', '', '', '', '', '', '', '', ''];
+  currentPlayer = 'X';
+  gameActive = true;
+  gameBoard.style.visibility = 'visible';
+  statusText.textContent = `Player ${currentPlayer}'s turn`;
+  cells.forEach(cell => {
+    cell.textContent = '';
+    cell.addEventListener('click', handleCellClick);
+  });
 }
 
-// Check winner
-function checkWinner() {
-    return winPatterns.some(pattern =>
-        pattern.every(index => cells[index].innerHTML === currentPlayer)
-    );
+function restartGame() {
+  startGame();
 }
 
-// Check tie
-function checkTie() {
-    return cells.every(cell => cell.innerHTML !== "");
-}
-
-// Disable board after game ends
-function disableBoard() {
-    cells.forEach(cell => cell.style.pointerEvents = "none");
-}
-
-// Minimax Algorithm for AI
-function minimax(boardState, player) {
-    const availableMoves = boardState.map((v, i) => v === "" ? i : null).filter(v => v !== null);
-
-    if (winPatterns.some(pattern => pattern.every(index => boardState[index] === "X"))) {
-        return { score: -10 };
-    }
-    if (winPatterns.some(pattern => pattern.every(index => boardState[index] === "O"))) {
-        return { score: 10 };
-    }
-    if (availableMoves.length === 0) {
-        return { score: 0 };
-    }
-
-    let moves = [];
-    for (let move of availableMoves) {
-        let newBoard = [...boardState];
-        newBoard[move] = player;
-        let result = minimax(newBoard, player === "O" ? "X" : "O");
-        moves.push({ index: move, score: result.score });
-    }
-
-    return player === "O" ? moves.reduce((best, move) => move.score > best.score ? move : best) :
-                            moves.reduce((best, move) => move.score < best.score ? move : best);
-}
-
-// Reset game
-startBtn.addEventListener("click", createBoard);
-
-// Start the game on first load
-createBoard();
+startBtn.addEventListener('click', startGame);
+restartBtn.addEventListener('click', restartGame);

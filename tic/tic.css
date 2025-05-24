@@ -1,70 +1,64 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #282c34;
-    color: white;
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
-    font-size: 2em;
-    margin: 20px;
+  margin-top: 20px;
 }
 
-#start-btn {
-    padding: 10px 20px;
-    font-size: 1.2em;
-    cursor: pointer;
-    background-color: #61dafb;
-    border: none;
-    border-radius: 5px;
-}
-
-#return-home{
-    padding: 10px 20px;
-    font-size: 1.2em;
-    cursor: pointer;
-    background-color: #61dafb;
-    border: none;
-    border-radius: 5px;
-}
-
-#restart-btn {
-    padding: 10px 15px;
-    font-size: 1em;
-    cursor: pointer;
-    background-color: #ff6b6b;
-    border: none;
-    border-radius: 5px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-#game-board {
-    display: grid;
-    grid-template-columns: repeat(3, 100px);
-    gap: 10px;
-    justify-content: center;
-    margin-top: 20px;
+#gameBoard {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 5px;
+  justify-content: center;
+  margin: 20px auto;
+  visibility: hidden;
 }
 
 .cell {
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
-    color: black;
-    font-size: 2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border-radius: 10px;
+  width: 100px;
+  height: 100px;
+  background-color: #111;
+  color: #fff;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid #fff;
+  transition: background-color 0.3s;
 }
 
 .cell:hover {
-    background-color: #ddd;
+  background-color: #222;
+}
+
+.btn-container {
+  margin: 20px;
+}
+
+button {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #ccc;
 }
 
 #status {
-    font-size: 1.5em;
-    margin-top: 20px;
+  margin-top: 10px;
+  font-size: 18px;
 }
