@@ -55,7 +55,7 @@ button {
   padding: 10px 20px;
   font-size: 4vw;
   min-width: 100px;
-  max-width: 40vw;
+  max-width: 40rem;
   cursor: pointer;
   transition: background-color 0.3s;
 }
