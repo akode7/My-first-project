@@ -1,102 +1,56 @@
-/* Reset & Base Styles */
-* {
+/* style.css */
+
+/* Reset and basic setup */
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
-    font-family: 'Orbitron', sans-serif;
-    color: #f0f0f0;
-    padding: 3rem 2rem;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
     text-align: center;
-    min-height: 100vh;
-    overflow-x: hidden;
 }
 
-/* Import Retro Font */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-/* Animated Title */
+/* Main title */
 .title {
-    font-size: 3.5rem;
-    margin-bottom: 0.5rem;
-    color: #00ffe5;
-    text-shadow: 0 0 10px #00ffe5, 0 0 20px #0ff, 0 0 40px #00f2ff;
-}
-
-/* Era Headings */
-.e-t, .m-t, .h-t {
-    font-size: 2rem;
-    margin: 2.5rem 0 1rem;
-    color: #ff00ff;
-    border-bottom: 2px dashed #ff00ff;
+    font-size: 3em;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #fff;
     display: inline-block;
-    padding-bottom: 0.4rem;
-    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
+    padding-bottom: 10px;
 }
 
-/* Link Section */
+/* Era titles */
+.e-t, .m-t, .h-t {
+    font-size: 2em;
+    margin-top: 40px;
+    text-decoration: underline;
+}
+
+/* Links container */
 .easy-links {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1.2rem;
-    margin-top: 1.2rem;
+    gap: 20px;
+    margin: 20px;
 }
 
-/* Glassy Neon Button Links */
+/* Link styling */
 .easy-links a {
-    padding: 1rem 1.8rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #ffffff;
     text-decoration: none;
+    color: #000;
+    background-color: #fff;
+    padding: 15px 25px;
+    border: 2px solid #fff;
     font-weight: bold;
-    border-radius: 16px;
-    backdrop-filter: blur(8px);
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    text-shadow: 0 0 5px #fff;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
 }
 
-/* Hover Effects */
+/* Hover effect */
 .easy-links a:hover {
-    background: rgba(0, 255, 255, 0.15);
-    transform: scale(1.08);
-    box-shadow: 0 0 15px #0ff, 0 0 25px #0ff;
-}
-
-/* Shine Effect on Hover */
-.easy-links a::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transform: rotate(25deg);
-    pointer-events: none;
-    transition: all 0.5s;
-}
-
-/* Responsive Layout */
-@media (max-width: 600px) {
-    .easy-links {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .easy-links a {
-        width: 90%;
-        text-align: center;
-    }
-
-    .title {
-        font-size: 2.5rem;
-    }
+    color: #fff;
+    background-color: #000;
+    border-color: #fff;
 }
