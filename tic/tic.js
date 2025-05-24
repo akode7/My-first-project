@@ -36,14 +36,34 @@ function checkWin() {
 function handleCellClick(e) {
   const index = e.target.dataset.index;
 
-  if (board[index] !== '' || !gameActive) return;
+  if (board[index] !== '' || !gameActive || currentPlayer !== 'X') return;
 
-  board[index] = currentPlayer;
-  e.target.textContent = currentPlayer;
+  makeMove(index, 'X');
+  if (!checkWin()) {
+    currentPlayer = 'O';
+    statusText.textContent = `AI's turn...`;
+    setTimeout(aiMove, 500); // slight delay for realism
+  }
+}
+
+function makeMove(index, player) {
+  board[index] = player;
+  cells[index].textContent = player;
+}
+
+function aiMove() {
+  if (!gameActive) return;
+
+  const available = board.map((val, i) => val === '' ? i : null).filter(v => v !== null);
+  if (available.length === 0) return;
+
+  // Simple AI: choose first available cell
+  const index = available[0];
+  makeMove(index, 'O');
 
   if (!checkWin()) {
-    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-    statusText.textContent = `Player ${currentPlayer}'s turn`;
+    currentPlayer = 'X';
+    statusText.textContent = `Player X's turn`;
   }
 }
 
@@ -55,6 +75,7 @@ function startGame() {
   statusText.textContent = `Player ${currentPlayer}'s turn`;
   cells.forEach(cell => {
     cell.textContent = '';
+    cell.removeEventListener('click', handleCellClick);
     cell.addEventListener('click', handleCellClick);
   });
 }

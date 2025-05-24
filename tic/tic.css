@@ -9,29 +9,30 @@ body {
 
 h1 {
   margin-top: 20px;
+  font-size: 6vw;
 }
 
 #gameBoard {
   display: grid;
-  grid-template-columns: repeat(3, 100px);
-  grid-template-rows: repeat(3, 100px);
-  gap: 5px;
-  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2vw;
+  width: 90vw;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
   margin: 20px auto;
   visibility: hidden;
 }
 
 .cell {
-  width: 100px;
-  height: 100px;
   background-color: #111;
   color: #fff;
-  font-size: 2em;
+  font-size: 8vw;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   border: 1px solid #fff;
+  aspect-ratio: 1 / 1;
   transition: background-color 0.3s;
 }
 
@@ -41,6 +42,10 @@ h1 {
 
 .btn-container {
   margin: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 button {
@@ -48,8 +53,9 @@ button {
   color: #000;
   border: none;
   padding: 10px 20px;
-  font-size: 16px;
-  margin: 0 10px;
+  font-size: 4vw;
+  min-width: 100px;
+  max-width: 40vw;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -60,5 +66,18 @@ button:hover {
 
 #status {
   margin-top: 10px;
-  font-size: 18px;
+  font-size: 4vw;
+}
+
+/* Optional: better spacing for small phones */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 8vw;
+  }
+  button {
+    font-size: 5vw;
+  }
+  #status {
+    font-size: 5vw;
+  }
 }
