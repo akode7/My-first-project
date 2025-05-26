@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tetris Game</title>
-    <link rel="stylesheet" href="tetris.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tetris - Black & White</title>
+  <link rel="stylesheet" href="tetris.css" />
 </head>
 <body>
+  <h1>Tetris</h1>
 
-    <h1>Tetris Game</h1>
-    <button id="startButton">Start Game</button>
-    <button onclick="location.href='index.html'">Return Home</button>
-    <button id="restartButton">Restart Game</button>
-    <canvas id="tetrisCanvas"></canvas>
-    <p>Score: <span id="score">0</span></p>
+  <div class="btn-container">
+    <button id="startBtn">Start</button>
+    <button id="restartBtn">Restart</button>
+  </div>
 
-    <script src="tetris.js"></script>
+  <div class="game-container">
+    <canvas id="tetris" width="240" height="400"></canvas>
+  </div>
 
+  <script src="tetris.js"></script>
 </body>
 </html>
